@@ -1,0 +1,178 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: rgb(68, 68, 68);
+}
+
+.playground {
+  margin: 0 auto;
+  height: 100vh;
+  padding-top: 4%;
+  max-width: 20rem;
+  width: 60%;
+}
+
+.field {
+  display: flex;
+  aspect-ratio: 1/1;
+  width: 20rem;
+  height: 20rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1%;
+  padding: 3%;
+  background-color: white;
+  border-radius: 7px;
+}
+
+
+.cell {
+  aspect-ratio: 1/1;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 100%;
+  background-color: rgb(252, 237, 33);
+  color: rgb(39, 39, 39);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 5px 2px rgb(255, 248, 186) inset;
+}
+
+
+.buttons{
+  width: 20rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.restart {
+background-color: white;
+padding: 0.3em 1.1em;
+border-radius: 15px;
+
+}
+
+.stop {
+  background-color: rgb(255, 94, 94);
+padding: 0.3em 1.1em;
+border-radius: 15px;
+
+}
+
+.save {
+  background-color: rgb(78, 255, 78);
+  padding: 0.3em 1.1em;
+  border-radius: 15px;
+}
+
+.results {
+  background-color: white;
+padding: 0.3em 1.1em;
+border-radius: 15px;
+
+}
+
+.display {
+ display: flex;
+ justify-content: space-around;
+ margin-bottom: 1em;
+
+
+}
+
+.moves {
+background-color: #ffffff;
+padding: 0.4em 1.2em;
+border-radius: 5px;
+}
+
+.time {
+  background-color: #ffffff;
+  padding: 0.4em 1.2em;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.minutes, .seconds, .colon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sizes {
+  display: flex;
+  justify-content: space-around;
+}
+
+.frame {
+  background-color: white;
+  padding: 0.5em 1em;
+  width: 35%;
+  margin: 0 auto;
+  margin-top: 1em;
+  border-radius: 15px;
+}
+
+.sizes > * {
+  padding: 0.2em 0.5em;
+  margin: 0 auto;
+  margin-top: 1em;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.label {
+  display: none;
+  position: absolute;
+  padding: 1em 2em;
+  background-color: white;
+  border: solid 2px grey;
+  font-size: 2rem;
+  top: 30vh;
+  left: 30vw;
+}
+
+@media all and (min-width: 1280px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width: 1280px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+.hold {
+  background-color: rgb(255, 255, 140);
+}
+
+.hovered {
+  background-color: green;
+  opacity: 0.33;
+}
+
+.hide {
+  background-color: white;
+  color: white;
+}
