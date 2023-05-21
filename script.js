@@ -40,20 +40,10 @@ restart.setAttribute("class", "restart");
 restart.textContent = "Restart";
 buttons.append(restart);
 
-let stop = document.createElement("div");
-stop.setAttribute("class", "stop");
-stop.textContent = "Stop";
-buttons.append(stop);
-
-let save = document.createElement("div");
-save.setAttribute("class", "save");
-save.textContent = "Save";
-buttons.append(save);
-
-let results = document.createElement("div");
-results.setAttribute("class", "results");
-results.textContent = "Results";
-buttons.append(results);
+let pause = document.createElement("div");
+pause.setAttribute("class", "pause");
+pause.textContent = "Pause";
+buttons.append(pause);
 
 let display = document.createElement("div");
 display.setAttribute("class", "display");
@@ -66,7 +56,7 @@ display.append(moves);
 
 let time = document.createElement("div");
 time.setAttribute("class", "time");
-time.textContent = `Time:  `;
+time.textContent = `Time:   `;
 display.append(time);
 
 let minutes = document.createElement("div");
@@ -148,7 +138,7 @@ function init() {
 
       if (num === size ** 2) {
         cell.textContent = "";
-        cell.style.backgroundColor = "white";
+        cell.style.backgroundColor = "#442b6bb2";
         cell.style.boxShadow = 'none';
       } else {
         cell.textContent = `${num}`;
@@ -305,8 +295,7 @@ function dragEnd(e) {
     move++;
     moves.textContent = `Moves: ${move}`;
 
-    emptyCell.style.backgroundColor = 'white';
-    emptyCell.style.boxShadow = 'none';
+    emptyCell.style.backgroundColor = '#3e2961';
 
     swopAudio.play();
     //check if the player won

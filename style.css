@@ -1,104 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Candal&family=Kumbh+Sans&display=swap');
+
+:root {
+  --small-b-radius: 5px;
+  --main-color: #57407C;
+  --secondary-color: #442b6bb2;
+  --cell-color: #69C5B7;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Kumbh Sans', sans-serif;
 }
 
 html {
-  font-size: 16px;
+  font-size: 1.125rem;
 }
 
 body {
-  background-color: rgb(68, 68, 68);
+  background-color: var(--main-color);
+  color: white;
 }
 
 .playground {
   margin: 0 auto;
   height: 100vh;
   padding-top: 4%;
-  max-width: 20rem;
-  width: 60%;
+  width: min(22rem, 90%);
+  /* max-width: 20rem;
+  width: 90%; */
 }
 
 .field {
   display: flex;
-  aspect-ratio: 1/1;
-  width: 20rem;
-  height: 20rem;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1%;
-  padding: 3%;
-  background-color: white;
-  border-radius: 7px;
+  justify-content: center;
+  border-radius: var(--small-b-radius);
 }
 
-
 .cell {
+  background-color: var(--cell-color);
   aspect-ratio: 1/1;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 100%;
-  background-color: rgb(252, 237, 33);
-  color: rgb(39, 39, 39);
+  margin: 0.1rem;
+  width: 100%;
+  border-radius: var(--small-b-radius);
+  font-size: 2.1rem;
+  font-family: 'Candal', sans-serif;
+  ;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0px 0px 5px 2px rgb(255, 248, 186) inset;
 }
 
 
-.buttons{
-  width: 20rem;
+.buttons {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1em;
 }
 
 .restart {
-background-color: white;
-padding: 0.3em 1.1em;
-border-radius: 15px;
-
-}
-
-.stop {
-  background-color: rgb(255, 94, 94);
-padding: 0.3em 1.1em;
-border-radius: 15px;
-
-}
-
-.save {
-  background-color: rgb(78, 255, 78);
+  background-color: var(--secondary-color);
   padding: 0.3em 1.1em;
-  border-radius: 15px;
+  border-radius: var(--small-b-radius);
+
 }
 
-.results {
-  background-color: white;
-padding: 0.3em 1.1em;
-border-radius: 15px;
-
+.pause {
+  background-color: rgb(255, 94, 94);
+  padding: 0.3em 1.1em;
+  border-radius: var(--small-b-radius);
 }
 
 .display {
- display: flex;
- justify-content: space-around;
- margin-bottom: 1em;
-
-
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
 }
 
 .moves {
-background-color: #ffffff;
-padding: 0.4em 1.2em;
-border-radius: 5px;
+  background-color: var(--secondary-color);
+  padding: 0.4em 1.2em;
+  border-radius: 5px;
 }
 
 .time {
-  background-color: #ffffff;
+  background-color: var(--secondary-color);
   padding: 0.4em 1.2em;
   border-radius: 5px;
   display: flex;
@@ -106,31 +95,36 @@ border-radius: 5px;
   align-items: center;
 }
 
-.minutes, .seconds, .colon {
+.minutes,
+.seconds,
+.colon {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+
+.frame {
+  background-color: var(--secondary-color);
+  padding: 0.5em 1em;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 1em;
+  border-radius: var(--small-b-radius);
+}
+
 .sizes {
   display: flex;
   justify-content: space-around;
+  gap: 0.2rem;
+  margin-top: 0.5rem;
 }
 
-.frame {
-  background-color: white;
-  padding: 0.5em 1em;
-  width: 35%;
-  margin: 0 auto;
-  margin-top: 1em;
-  border-radius: 15px;
-}
-
-.sizes > * {
+.sizes>* {
+  width: 100%;
+  text-align: center;
   padding: 0.2em 0.5em;
-  margin: 0 auto;
-  margin-top: 1em;
-  background-color: white;
+  background-color: var(--secondary-color);
   border-radius: 5px;
 }
 
@@ -138,34 +132,16 @@ border-radius: 5px;
   display: none;
   position: absolute;
   padding: 1em 2em;
-  background-color: white;
+  background-color: var(--secondary-color);
   border: solid 2px grey;
   font-size: 2rem;
   top: 30vh;
   left: 30vw;
 }
 
-@media all and (min-width: 1280px) {
-  html {
-    font-size: 16px;
-  }
-}
 
-@media all and (max-width: 1280px) {
-  html {
-    font-size: 14px;
-  }
-}
+/*  */
 
-@media all and (max-width: 768px) {
-  html {
-    font-size: 8px;
-  }
-}
-
-.hold {
-  background-color: rgb(255, 255, 140);
-}
 
 .hovered {
   background-color: green;
