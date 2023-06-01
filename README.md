@@ -1,8 +1,9 @@
-# 15 Puzzle
+# 15 Puzzle 🧩
 
 The 15 puzzle is a sliding puzzle with usually 15 square tiles numbered 1–15 in a 4x4 frame with one unoccupied position left.
 
-[Play 15 Puzzle](https://master--benevolent-sunburst-dbd4f5.netlify.app/)
+[Play 15 Puzzle 🖐️](https://grinushka.github.io/fifteen-puzzle/)
+
 
 ### Screenshots
 
@@ -12,7 +13,7 @@ The 15 puzzle is a sliding puzzle with usually 15 square tiles numbered 1–15 i
 
 - Empty HTML file, all things get created in JS
 - Desire to write as little code as possible and still have all the features available
-- Keep field with cells of the same size, no matter what size the frame is
+- Keep field with cells of the same size, no matter how big the frame is
 
 ### Features
 
