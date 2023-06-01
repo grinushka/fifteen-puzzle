@@ -1,4 +1,4 @@
-# 15 Puzzle 🧩
+# 15 Puzzle
 
 The 15 puzzle is a sliding puzzle with usually 15 square tiles numbered 1–15 in a 4x4 frame with one unoccupied position left.
 
