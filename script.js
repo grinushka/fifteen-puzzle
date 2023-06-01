@@ -102,7 +102,6 @@ label.setAttribute('class', 'label');
 body.append(label);
 
 const winMessage = document.createElement('span');
-// winMessage.setAttribute('class', 'win-message');
 label.append(winMessage);
 
 const labelRestart = document.createElement('button');
@@ -167,7 +166,7 @@ function initGame() {
       // Change the styling for an empty box, whihc will be the size**2
       if (num === size ** 2) {
         cell.textContent = '';
-        cell.style.backgroundColor = '#442b6bb2';
+        cell.style.backgroundColor = '#342e55';
         cell.style.boxShadow = 'none';
       } else {
         // Other cells will be with the number
@@ -380,7 +379,6 @@ function clearTheField() {
 
 // Start the game
 function startTheGame() {
-  
   isPaused = false;
   pause.textContent = 'Pause';
   
