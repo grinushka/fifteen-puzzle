@@ -1,12 +1,6 @@
 "use strict";
 
-// To anyone who is reading it right now:
-// Thank you for the time you spend on this!
-// I am sorry for the messy code, but I had to make it work
-// being short of time
-// that is why it is not kind of optimized.
-
-// SOME VARIABLES THAT WILL BE USED
+// Variables
 
 let currentCell;
 let emptyCell;
@@ -24,7 +18,7 @@ clickAudio.src = "assets/mouse-click.mp3";
 let swopAudio = new Audio();
 swopAudio.src = "assets/swop.mp3";
 
-// CREATE UI
+// Create UI
 
 let playground = document.createElement("div");
 playground.setAttribute("class", "playground");
@@ -56,7 +50,7 @@ display.append(moves);
 
 let time = document.createElement("div");
 time.setAttribute("class", "time");
-time.textContent = `Time:   `;
+time.textContent = `Time:`;
 display.append(time);
 
 let minutes = document.createElement("div");
@@ -102,27 +96,36 @@ five.setAttribute("class", "five");
 five.textContent = "5x5";
 sizes.append(five);
 
-let six = document.createElement("div");
-six.setAttribute("class", "six");
-six.textContent = "6x6";
-sizes.append(six);
-
-let seven = document.createElement("div");
-seven.setAttribute("class", "seven");
-seven.textContent = "7x7";
-sizes.append(seven);
-
-let eight = document.createElement("div");
-eight.setAttribute("class", "eight");
-eight.textContent = "8x8";
-sizes.append(eight);
-
 let label = document.createElement("div");
 label.setAttribute("class", "label");
-// label.textContent = ``;
 body.append(label);
 
-// INITIALIZE the game
+
+// Event Listeners for buttons
+restart.addEventListener("click", function () {
+  startTheGame();
+});
+
+three.addEventListener("click", function () {
+  size = 3;
+  frame.textContent = "Frame: 3X3";
+  startTheGame();
+});
+
+four.addEventListener("click", function () {
+  size = 4;
+  frame.textContent = "Frame: 4X4";
+  startTheGame();
+});
+
+five.addEventListener("click", function () {
+  size = 5;
+  frame.textContent = "Frame: 5X5";
+  startTheGame();
+});
+
+
+// Init the game
 function init() {
   // create a matrix for the game (arr)
   let num = 1;
@@ -152,17 +155,8 @@ function init() {
       row.push(num);
       num++;
 
-      // add listeners to each cell
+      // Add listeners to each cell
       cell.addEventListener("click", moveCell);
-
-      cell.addEventListener("dragstart", dragStart);
-      cell.addEventListener("dragover", dragOver);
-
-      cell.addEventListener("dragenter", dragEnter);
-      cell.addEventListener("dragleave", dragLeave);
-
-      cell.addEventListener("drop", dragDrop);
-      cell.addEventListener("dragend", dragEnd);
 
       field.append(cell);
     }
@@ -173,12 +167,11 @@ function init() {
   return arr;
 }
 
-// CLICK functionality //not implemented yet
+// Move cell on click functionality
 
 function moveCell(e) {
   e.preventDefault();
   let id = e.target.id.split("-");
-  console.log(id);
 
   let coordinates = [
     [Number(id[0]), Number(id[1]) - 1],
@@ -203,8 +196,6 @@ function moveCell(e) {
   let emptyCell = document.getElementById(`${empty}`);
   let currentCell = document.getElementById(`${e.target.id}`);
 
-  console.log(emptyCell, currentCell);
-
   let currentID = currentCell.getAttribute("id");
   let emptyID = emptyCell.getAttribute("id");
   let middleID = currentID;
@@ -216,7 +207,7 @@ function moveCell(e) {
   currentCell.style.order = emptyOrder;
   emptyCell.style.order = middleOrder;
 
-  // change IDs
+  // swop IDs
   currentCell.setAttribute("id", `${emptyID}`);
   emptyCell.setAttribute("id", `${middleID}`);
 
@@ -227,83 +218,7 @@ function moveCell(e) {
   checkGame();
 }
 
-// DRAG FUNCTIONS
-function dragStart(e) {
-  currentCell = this;
-  e.target.classList.add('hold');
-}
-
-
-function dragOver(e) {
-  e.preventDefault();
-}
-
-function dragEnter(e) {
-  e.preventDefault();
-  e.target.style.backgroundColor = 'lightblue';
-}
-
-function dragLeave(e) {
-  e.target.style.backgroundColor = 'rgb(252, 237, 33)';
-}
-
-function dragDrop(e) {
-  emptyCell = this;
-  e.style.backgroundColor = 'rgb(252, 237, 33)';
-}
-
-function dragEnd(e) {
-  // e.target.style.backgroundColor = 'rgb(252, 237, 33)';
-  e.target.classList.remove('hold', 'hide')
-  // if the TD we are swoping in is not empty one, we do nothing
-  if (!(Boolean(emptyCell.textContent) === false)) {
-    return;
-  }
-
-  let currentCoords = currentCell.id.split("-");
-  let row = parseInt(currentCoords[0]);
-  let column = parseInt(currentCoords[1]);
-
-  let emptyCoords = emptyCell.id.split("-");
-  let row2 = parseInt(emptyCoords[0]);
-  let column2 = parseInt(emptyCoords[1]);
-
-  let moveLeft = row == row2 && column2 == column - 1;
-  let moveRight = row == row2 && column2 == column + 1;
-
-  let moveUp = column == column2 && row2 == row - 1;
-  let moveDown = column == column2 && row2 == row + 1;
-
-  let isAdjacent = moveLeft || moveRight || moveUp || moveDown;
-
-  if (isAdjacent) {
-    // swop order
-    let currentID = currentCell.getAttribute("id");
-    let emptyID = emptyCell.getAttribute("id");
-    let middleID = currentID;
-
-    let currentOrder = getComputedStyle(currentCell).order;
-    let emptyOrder = getComputedStyle(emptyCell).order;
-    let middleOrder = currentOrder;
-
-    currentCell.style.order = emptyOrder;
-    emptyCell.style.order = middleOrder;
-
-    // swop IDs
-    currentCell.setAttribute("id", `${emptyID}`);
-    emptyCell.setAttribute("id", `${middleID}`);
-    move++;
-    moves.textContent = `Moves: ${move}`;
-
-    emptyCell.style.backgroundColor = '#3e2961';
-
-    swopAudio.play();
-    //check if the player won
-    checkGame();
-  }
-}
-
-// check if the player won
+// Check if the player has won the game
 
 function checkGame() {
   let arrCheck = [];
@@ -325,14 +240,10 @@ function checkGame() {
     label.textContent = `You won the Game in ${minutes.textContent}:${seconds.textContent} and ${move} moves!`;
     label.style.display = "block";
     arrOrderText = [];
-  } else {
-    console.log("false");
-    console.log(JSON.stringify(arrOrderText.flat()));
-    console.log(JSON.stringify(arrCheck.flat()));
   }
 }
 
-// get neigbours of our empty cell
+// Get neigbours of our empty cell
 
 class Box {
   constructor(x, y) {
@@ -397,6 +308,8 @@ function swapBoxes(box1, box2) {
   emptyCell.setAttribute("id", `${middleID}`);
 }
 
+// Shuffle the boxes to get the random order
+
 function shuffle() {
   let blankBox = new Box(size - 1, size - 1);
 
@@ -431,7 +344,7 @@ function clearTheField() {
   field.innerHTML = "";
 }
 
-// Start the game over
+// Start the game
 function startTheGame() {
   clearInterval(myInterval);
   minutes.textContent = "00";
@@ -447,46 +360,5 @@ function startTheGame() {
   myInterval = setInterval(setTime, 1000);
 }
 
-// What happens when the pages id loaded
+// What happens when the pages is loaded
 window.onload = startTheGame();
-
-// EVENT LISTENERS
-restart.addEventListener("click", function () {
-  startTheGame();
-});
-
-three.addEventListener("click", function () {
-  size = 3;
-  frame.textContent = "Frame: 3X3";
-  startTheGame();
-});
-
-four.addEventListener("click", function () {
-  size = 4;
-  frame.textContent = "Frame: 4X4";
-  startTheGame();
-});
-
-five.addEventListener("click", function () {
-  size = 5;
-  frame.textContent = "Frame: 5X5";
-  startTheGame();
-});
-
-six.addEventListener("click", function () {
-  size = 6;
-  frame.textContent = "Frame: 6X6";
-  startTheGame();
-});
-
-seven.addEventListener("click", function () {
-  size = 7;
-  frame.textContent = "Frame: 7X7";
-  startTheGame();
-});
-
-eight.addEventListener("click", function () {
-  size = 8;
-  frame.textContent = "Frame: 8X8";
-  startTheGame();
-});
