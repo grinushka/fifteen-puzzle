@@ -31,6 +31,7 @@ body {
   height: 100vh;
   padding-top: 1.6em;
   width: min(22rem, 90%);
+  transition: opacity 300ms;
 }
 
 .field {
@@ -64,15 +65,28 @@ body {
 
 .restart {
   background-color: var(--secondary-color);
-  padding: 0.3em 1.1em;
+  padding: 0.3em 1.3em;
   border-radius: var(--small-b-radius);
-
 }
 
 .pause {
-  background-color: rgb(255, 94, 94);
+  width: 4.7rem;
+  background-color: #ff5e5e;
   padding: 0.3em 1.1em;
   border-radius: var(--small-b-radius);
+  text-align: center;
+}
+
+.restart, .pause, .sizes > div, .frame, .time {
+  text-shadow: 1px 1px 2px #47474771;
+  box-shadow: 2px 2px 6px 0px #223c5033;
+  transition: box-shadow, text-shadow, 100ms;
+}
+
+.restart:hover, 
+.pause:hover, 
+.sizes > div:hover {
+  box-shadow: 3px 3px 7px 0px #3a3a3a5e;
 }
 
 .display {
@@ -137,11 +151,35 @@ body {
 
 .label {
   display: none;
+
   position: absolute;
+  width: 100%;
+  text-align: center;
   padding: 1em 2em;
   background-color: var(--secondary-color);
   border: solid 2px grey;
   font-size: 2rem;
-  top: 30vh;
-  left: 30vw;
+  backdrop-filter: blur(7px);
+}
+.label span {
+  font-size: 1.4rem;
+}
+
+.label button {
+  display: block;
+  font-size: 0.9rem;
+  margin: 1rem auto 0 auto;
+  padding: 1em 2.2em;
+  opacity: 0.9;
+  border: none;
+  border-radius: var(--small-b-radius);
+  text-align: center;
+  cursor: pointer;
+  transition: opacity, background-color, 100ms;
+}
+
+.label button:hover {
+  opacity: 1;
+  background-color: rgb(255, 255, 126);
+  text-shadow: 1px 1px 1px #64646438;
 }
